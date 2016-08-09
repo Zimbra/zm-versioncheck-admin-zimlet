@@ -1,0 +1,45 @@
+<project name="zm-versioncheck-admin-zimlet" default="deploy">
+
+    <import file="../zm-zcs/ant-global.xml" />	
+	
+	<property name="zimlet.file" value="com_zimbra_adminversioncheck.zip" />	
+
+	<!-- Creating build directory -->
+	<target name="build-init">		
+		<mkdir dir="${build.zimlet.dir}" />
+	</target>
+	
+	<!-- archiving zimlet -->
+	<target name="package-zimlet" depends="build-init" description="put zimlet files into zip archive for deployment">
+		<mkdir dir="${build.zimlet.dir}" />
+		<zip destfile="${build.zimlet.dir}/${zimlet.file}" update="true">
+			<fileset dir="${src.zimlet.dir}" includes="*"/>
+		</zip>
+	</target>
+	
+	<!-- deploying zimlet -->
+	<target name="deploy-zimlet" depends="package-zimlet,resolve" description="install files, deploy to LDAP">
+		<echo>Deploying zimlet: com_zimbra_adminversioncheck.zip</echo>
+		<mkdir dir="${build.zimlet.dir}" />		
+		<java classname="com.zimbra.cs.zimlet.ZimletUtil" fork="true" classpathref="class.path" failonerror="true">
+			<arg line="-q" />
+			<arg line="deploy" />
+			<arg file="${build.zimlet.dir}/${zimlet.file}" />
+		</java>
+	</target>	
+
+	<target name="clean" description="Removes build files">
+		<delete dir="${build.dir}" />
+	</target>
+	
+	<target name="deploy" depends="deploy-zimlet" description="Deploys the extension"/>
+	
+	<!-- We need to figure out how to automate webserver start/stop in a common way across repos -->
+	<!-- <target name="start-webserver">
+		<ant dir="../ZimbraServer" target="start-webserver" inheritAll="false"/>
+	</target>
+	<target name="stop-webserver">
+		<ant dir="../ZimbraServer" target="stop-webserver" inheritAll="false"/>
+	</target> -->
+	
+</project>
