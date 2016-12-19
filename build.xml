@@ -33,6 +33,9 @@
 	</target>
 	
 	<target name="deploy" depends="deploy-zimlet" description="Deploys the extension"/>
+
+	<!-- empty jar target used in publish-local of ant-global.xml -->
+	<target name="jar"></target>
 	
 	<!-- We need to figure out how to automate webserver start/stop in a common way across repos -->
 	<!-- <target name="start-webserver">
