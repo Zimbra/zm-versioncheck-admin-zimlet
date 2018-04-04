@@ -16,6 +16,6 @@
   <dependency org="zimbrasoap" name="zimbrasoap" rev="1.0" />
   <dependency org="com.unboundid" name="unboundid-ldapsdk" rev="2.3.8" />
   <dependency org="zimbracommon" name="zimbracommon" rev="1.0" />    
-  <dependency org="com.google.guava" name="guava" rev="13.0.1" />  
+  <dependency org="com.google.guava" name="guava" rev="23.0" />  
  </dependencies>
 </ivy-module>
