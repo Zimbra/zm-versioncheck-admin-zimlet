@@ -51,12 +51,10 @@ references:
                 exit 1
               fi
 
-              echo "--- ZIP produced ---"
+              echo "--- ZIP created ---"
               ls -la "$ZIP_PATH"
 
-              # Version is declared inside the zimlet's own XML descriptor, not
-              # injected at build time - pull it from there so what we publish
-              # to Nexus always matches the source of truth.
+              # Version is declared inside the zimlet's own XML descriptor...
               ZIMLET_VERSION=$(grep -o 'version="[^"]*"' src/zimlet/com_zimbra_adminversioncheck.xml | head -n1 | cut -d'"' -f2)
 
               if [ -z "$ZIMLET_VERSION" ]; then
@@ -162,4 +160,4 @@ workflows:
             filters:
                branches:
                  only:
-                   - ZCICD-48
+                   - develop
