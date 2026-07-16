@@ -94,7 +94,7 @@ references:
                  exit 1
                fi
 
-               bash ~/zm-nexus/scripts/publish-zip-to-nexus.sh \
+               bash ~/zm-nexus/scripts/publish-raw-artifacts-to-nexus.sh \
                  "build/zimlet" \
                  "zm-versioncheck-admin-zimlet/${ZIMLET_VERSION}"
 
