@@ -11,7 +11,6 @@ references:
             command: |
                git clone -b develop --single-branch https://github.com/Zimbra/zm-zcs.git ~/zm-zcs
                git clone -b master --single-branch https://github.com/Zimbra/zimbra-package-stub.git ~/zimbra-package-stub
-               git clone -b develop --single-branch https://github.com/Zimbra/zm-mailbox.git ~/zm-mailbox
                git clone -b master --single-branch https://$GITHUB_ACCESS_TOKEN@github.com/Zimbra/zm-nexus.git ~/zm-nexus
                mkdir -p ~/.zcs-deps
 
@@ -20,7 +19,6 @@ references:
             paths:
                - zm-versioncheck-admin-zimlet
                - zm-zcs
-               - zm-mailbox
                - zimbra-package-stub
                - zm-nexus
                - .zcs-deps
